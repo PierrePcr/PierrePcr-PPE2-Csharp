@@ -11,9 +11,7 @@ namespace AssisesSportLorrain
         private string loginUtilisateur;
         private string mdpUtilisateur;
 
-
-
- 
+       
 
         public string LoginUtilisateur
         {
@@ -48,12 +46,10 @@ namespace AssisesSportLorrain
             return DAOUtilisateur.getlUtilisateur();
         }
 
-        /*
-        public void connexionUtilisateur()
+
+        public Utilisateur checkUser()
         {
-            DAOUtilisateur.getAllUtilisateurs(this);
-        }*/
-
-
+            return DAOUtilisateur.getUserPass(this);
+        }
     }
 }

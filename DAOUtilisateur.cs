@@ -46,30 +46,21 @@ namespace AssisesSportLorrain
         }
 
 
-        /*
-        // Créer dans la BDD l'objet Atelier passé en paramètre
-        public static bool connexionUtilisateur(Utilisateur unUtilisateur)
+        public static Utilisateur getUserPass(Utilisateur unUtilisateur)
         {
-            bool statutConnexion;
-            string requete = "SELECT COUNT(*) FROM mrbs WHERE login_Utilisateur = '" + unUtilisateur.LoginUtilisateur + "' AND mdp_Utilisateur = '" + unUtilisateur.MdpUtilisateur + "' ";
+            string req = "select login_Utilisateur, mdp_Utilisateur  from mrbs where login_Utilisateur ='" + unUtilisateur.LoginUtilisateur + "' and mdp_Utilisateur = '" + unUtilisateur.MdpUtilisateur + "'";
             DAOFactory db = new DAOFactory();
             db.connecter();
-            db.execSQLWrite(requete);
 
-            SqlConnection con = new SqlConnection("Data Source='PC-FIXE-PEDROO';Initial Catalog=M2L;Integrated Security=true;");
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM mrbs WHERE login_Utilisateur = '" + unUtilisateur.LoginUtilisateur + "' AND mdp_Utilisateur = '" + unUtilisateur.MdpUtilisateur + "' ", con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
 
-            if(dt.Rows[0][0].ToString() == "1" )
-            {
-                return statutConnexion = true;
-            }
-            else
-            {
-                return statutConnexion = false;
-            }    
+
+            SqlDataReader reader = db.excecSQLRead(req);
+            reader.Read();
+            Utilisateur US = new Utilisateur(reader[0].ToString(), reader[1].ToString());
+
+
+
+            return US;
         }
-        */
     }
 }

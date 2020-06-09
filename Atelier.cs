@@ -78,11 +78,11 @@ namespace AssisesSportLorrain
             DAOAtelier.modifierAtelier(this);
         }
 
+
         // Supprimer d'un atelier
         public void supprimerAtelier()
         {
             DAOAtelier.supprimerAtelier(this);
-
         }
 
 
